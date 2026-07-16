@@ -1,0 +1,2 @@
+import Card from '../layout/Card';
+export default function LoadingCard(){return <Card><div style={{height:16,width:'40%',marginBottom:12,background:'#374151'}}/><div style={{height:28,width:'70%',background:'#4b5563'}}/></Card>}
