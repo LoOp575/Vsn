@@ -1,0 +1,1 @@
+export default function Sidebar(){const items=['Dashboard','Market Scanner','Signals','History','Watchlist','Settings'];return <nav><h2>VSN</h2><ul>{items.map(i=><li key={i}><button>{i}</button></li>)}</ul></nav>}
