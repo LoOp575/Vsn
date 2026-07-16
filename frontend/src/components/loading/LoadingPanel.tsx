@@ -1,0 +1,2 @@
+import Panel from '../layout/Panel';
+export default function LoadingPanel(){return <Panel title='Loading'><div style={{height:14,width:'90%',background:'#374151',marginBottom:10}}/><div style={{height:14,width:'75%',background:'#4b5563',marginBottom:10}}/><div style={{height:14,width:'60%',background:'#374151'}}/></Panel>}
