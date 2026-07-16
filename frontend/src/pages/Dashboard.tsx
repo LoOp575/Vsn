@@ -1,11 +1,11 @@
-import { useEffect, useState } from 'react';
+import {useState} from 'react';
+import {useSignalStream} from '../hooks/useSignalStream';
+import SignalTable from '../components/SignalTable';
+import LiveStatusCard from '../components/LiveStatusCard';
+import CoinDetailPanel from '../components/CoinDetailPanel';
 
 export default function Dashboard(){
- const [signals,setSignals]=useState<any[]>([]);
- useEffect(()=>{
-  fetch('/signal/scan',{method:'POST'})
-   .then(r=>r.json())
-   .then(d=>setSignals(d.signals||[]));
- },[]);
- return (<div><h1>VSN Formula Brain</h1><table><thead><tr><th>Symbol</th><th>Action</th><th>Confidence</th></tr></thead><tbody>{signals.map((s,i)=><tr key={i}><td>{s.symbol}</td><td>{s.action}</td><td>{s.confidence}</td></tr>)}</tbody></table></div>);
+ const {signals,connected}=useSignalStream();
+ const [selected,setSelected]=useState<any>();
+ return (<div><h1>VSN Formula Brain</h1><LiveStatusCard connected={connected} lastUpdate={new Date().toLocaleTimeString()}/><SignalTable signals={signals}/><button onClick={()=>setSelected(signals[0])}>Show First</button><CoinDetailPanel signal={selected}/></div>);
 }
