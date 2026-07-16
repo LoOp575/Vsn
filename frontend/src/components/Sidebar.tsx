@@ -1,1 +1,2 @@
-export default function Sidebar(){const items=['Dashboard','Market Scanner','Signals','History','Watchlist','Settings'];return <nav><h2>VSN</h2><ul>{items.map(i=><li key={i}><button>{i}</button></li>)}</ul></nav>}
+type Props={active?:string};
+export default function Sidebar({active='Dashboard'}:Props){const items=['Dashboard','Market Scanner','Signals','History','Watchlist','Settings'];return <nav><h2>VSN</h2><ul>{items.map(i=><li key={i}><button aria-current={active===i?'page':undefined} style={{fontWeight:active===i?'bold':'normal'}}>{i}</button></li>)}</ul></nav>}
